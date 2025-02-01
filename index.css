@@ -1,0 +1,283 @@
+* {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-decoration: none;
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-image: url('bg.jpg'); /* ใส่ URL ของรูปภาพ */
+    background-size: 100% 100%; /* ทำให้ bg ครอบคลุมพื้นที่หน้าจอแบบพอดี */
+    background-position: center; /* จัดให้อยู่ตรงกลาง */
+    background-repeat: no-repeat; /* ไม่ให้ภาพซ้ำ */
+    font-family: "Sarabun", sans-serif;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    overflow: hidden; /* ป้องกันการเลื่อนหน้าจอ */
+}
+
+header {
+    width: 100%;
+    height: 80px;
+    background-color: black;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 5vw;
+    text-transform: capitalize;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 999;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo-img {
+    width: 35px;
+    height: auto;
+    margin-right: 10px;
+}
+
+.text {
+    font-size: 16px;
+    font-weight: 500;
+    color: white;
+    white-space: nowrap;
+}
+
+/* New CSS for globe icon and dropdown */
+.navbar-right {
+    position: absolute;
+    right: 80px; /* ปรับให้ชิดขวาเกือบสุด */
+    top: 50%;
+    transform: translateY(-50%);
+    padding-right: 0; /* ลด padding ให้น้อยลงเพื่อให้ชิดขวามากขึ้น */
+}
+
+.globe-icon {
+    width: 27px;
+    height: auto;
+    cursor: pointer;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    right: 0;
+    min-width: 120px;
+    box-shadow: 0px 8px 16px #0000005f;
+    z-index: 1;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown-content.show {
+    display: block; /* แสดง dropdown เมื่อถูกเรียก */
+}
+
+.dropdown-item {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    color: white;
+    text-decoration: none;
+    background-color: #212121;
+    transition: background-color 0.3s ease;
+}
+
+.dropdown-item:hover {
+    background-color: #ff5900;
+}
+
+.dropdown-img {
+    width: 25px;
+    height: 25px;
+    margin-right: 10px;
+}
+
+@media (max-width: 1205px) {
+    .navbar-right {
+        right: 50px;
+    }
+}
+@media (max-width: 768px) {
+    .navbar-right {
+        right: 30px;
+    }
+}
+@media (max-width: 480px) {
+    .navbar-right {
+        right: 15px; 
+    }
+    .globe-icon {
+        width: 25px;
+        height: auto;
+        cursor: pointer;
+    }
+    .dropdown-img {
+        width: 22px;
+        height: 22px;
+        margin-right: 10px;
+    }
+}
+
+@media (max-width: 1080px) {
+    .text {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 991px) {
+    .text {
+        font-size: 14px;
+    }
+    .image {
+        width: 70px;
+        height: 70px;
+    }
+}
+
+:root {
+    --size: 150px;
+    --radius: calc(var(--size) * 20 / 100);
+}
+
+.image-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: var(--size);
+    margin: calc(var(--size) * 20 / 100);
+}
+
+.image {
+    width: var(--size);
+    height: var(--size);
+    border-radius: var(--radius);
+    background-size: cover;
+    position: relative;
+    cursor: default; /* เคอร์เซอร์ปกติเมื่อชี้ที่รูป */
+}
+
+.image:before {
+    content: "";
+    position: absolute;
+    width: 90%;
+    height: 100%;
+    background-image: inherit;
+    background-size: cover;
+    border-radius: var(--radius);
+    z-index: -1;
+    filter: blur(12px);
+    opacity: 0.6;
+    left: 50%;
+    transform: translate(-50%, 10%);
+}
+
+footer {
+    background-color: black;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    font-size: 14px;
+    z-index: 1000;
+}
+@media (max-width: 778px) {
+    .footer-text {
+        font-size: 12px;
+        padding: 1px 0;
+    }
+}
+
+.section-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding-top: 20px;
+    box-sizing: border-box; /* รวม padding ไว้ในการคำนวณขนาด */
+}
+
+.section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+    width: 100%; /* ให้ .section ใช้พื้นที่เต็มหน้าจอ */
+    max-width: 600px; /* จำกัดขนาดสูงสุดสำหรับความยาว */
+    padding: 22px; /* เพิ่มระยะห่างภายใน */
+    box-sizing: border-box; /* ให้ padding รวมในขนาดคอนเทนเนอร์ */
+}
+
+.link-box {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    background-color: #000000;
+    color: #fff;
+    border-radius: 17px;
+    padding: 15px;
+    width: 90%; /* ใช้เปอร์เซ็นต์เพื่อปรับตามหน้าจอ */
+    max-width: 400px; /* จำกัดขนาดสูงสุด */
+    transition: background 0.3s, transform 0.2s;
+}
+
+.link-box:hover {
+    background: linear-gradient(45deg, black, #ff5e00, #414141);
+    transform: scale(1.05); /* ขยายเล็กน้อยเมื่อ hover */
+}
+
+.logo {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+}
+
+.text-link {
+    font-size: 18px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+@media (max-width: 480px) {
+    .section-container {
+        box-sizing: border-box; /* รวม padding ไว้ในการคำนวณขนาด */
+        padding-top: 0px;
+        padding-bottom: 35px;
+    }
+    .section {
+        gap: 11px;
+    }
+    .link-box {
+        padding: 15px;
+        border-radius: 15px;
+    }
+    .logo {
+        width: 35px;
+        height: 35px;
+        object-fit: contain;
+    }
+    .text-link {
+        font-size: 16px;
+    }
+}
